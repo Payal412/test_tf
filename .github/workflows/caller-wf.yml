@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   call-workflow-passing-date:
-    uses: https://github.com/Payal412/GitHub-Actions-Terrafrom-ReadmeCreation/blob/main/.github/workflows/automate-readmefile.yml@main
+    uses: Payal412/GitHub-Actions-Terrafrom-ReadmeCreation/.github/workflows/automate-readmefile.yml@main
 
   terraform:
     name: Terraform
