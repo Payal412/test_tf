@@ -31,8 +31,8 @@ jobs:
 
       - name: Setup Terraform Docs
         uses: terraform-docs/gh-actions@v1.0.0
+        
         with:
-          cli_config_credentials_token: ${{ secrets.token }}
           working-dir: .
           output-file: README.md
           output-method: inject
