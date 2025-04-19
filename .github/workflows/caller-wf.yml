@@ -1,0 +1,42 @@
+name: Terraform
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  repository-projects: write
+  actions: write
+  checks: write
+  contents: write
+  deployments: write
+  id-token: write
+
+jobs:
+  call-workflow-passing-date:
+    uses: Payal412/GitHub-Actions-Terrafrom-ReadmeCreation/.github/workflows/Automate-Readme.yml@main
+
+  terraform:
+    name: Terraform
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform Docs
+        uses: terraform-docs/gh-actions@v1.0.0
+        with:
+          cli_config_credentials_token: ${{ secrets.token }}
+          working-dir: .
+          output-file: README.md
+          output-method: inject
+          git-push: "true"
+
+      - name: Terraform Init
+        run: terraform init
